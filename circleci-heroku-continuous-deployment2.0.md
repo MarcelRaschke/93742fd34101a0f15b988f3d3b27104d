@@ -65,3 +65,5 @@ Prerequisites:
     * in project settings -> SSH Permissions -> `Add SSH Key`
     * Hostname = git.heroku.com
     * Paste the private key and click `Add SSH Key`
+5. Celebrate (trigger circleci on your master branch and watch it deploy!)
+![celebrate](https://media.giphy.com/media/xT8qBmk4MAjBeTO1tm/giphy.gif)
