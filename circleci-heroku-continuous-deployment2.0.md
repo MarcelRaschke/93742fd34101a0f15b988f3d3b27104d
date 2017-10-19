@@ -5,6 +5,7 @@
 
 ### Steps:
 Prerequisites:
+
   * Heroku CLI installed on your computer
   * A project deployed to Heroku
   * A project in circleci set up using circleci version 2.0
@@ -45,6 +46,9 @@ Prerequisites:
   EOF
   ```
 3. add Environment Variables to circleci
+|___Key Name___|____Key Value___|
+|___`HEROKU_API_KEY`___|___`Found in Account Settings: It is your individual API Key even if it is a company Account`___|
+  
   * HEROKU_API_KEY
     - Found in Account Settings: It is your individual API Key even if it is a company Account
   * HEROKU_LOGIN
