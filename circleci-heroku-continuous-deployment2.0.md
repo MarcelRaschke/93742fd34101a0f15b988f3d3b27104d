@@ -1,6 +1,6 @@
-# Deploying from CircleCi2.0 to Heroku
+# Deploying from circleci2.0 to Heroku
 ### Resources:
-* [CircleCi 2.0 docs](https://circleci.com/docs/2.0/deployment_integrations/#heroku)
+* [circleci 2.0 docs](https://circleci.com/docs/2.0/deployment_integrations/#heroku)
 * [Managing SSH Keys on Heroku](https://devcenter.heroku.com/articles/keys)
 
 ### Steps:
@@ -10,7 +10,7 @@ Prerequisites:
   * A project deployed to Heroku
   * A project in circleci set up using circleci version 2.0
 
-1. edit `.circleci/config.yml`
+1. Edit `.circleci/config.yml`
   - Nested under `steps` (after you run tests, etc.) add:
   ```
   - run: bash .circleci/setup-heroku.sh
@@ -26,6 +26,7 @@ Prerequisites:
         fi
   ```
 2. Create a new file `.circleci/setup-heroku.sh` with the following:
+
   ```
   #!/bin/bash
   ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
@@ -47,28 +48,27 @@ Prerequisites:
   ```
 3. add Environment Variables to circleci
 
-| Key Name | Key Value |
-|`HEROKU_API_KEY`| `Found in Account Settings: It is your individual API Key even if it is a company Account` |
-  
-  * HEROKU_API_KEY
-    - Found in Account Settings: It is your individual API Key even if it is a company Account
-  * HEROKU_LOGIN
-    - Your Heroku login e.g: `name.lastname@company.com`
-  * HEROKU_APP_NAME
-    - The name of your app on Heroku
+Key Name | Where to get it
+--- | ---
+`HEROKU_API_KEY` | Found in Account Settings: It is your individual API Key even if it is a company Account
+`HEROKU_LOGIN` | Your Heroku login e.g: `name.lastname@company.com`
+`HEROKU_APP_NAME` | The name of your app on Heroku
+
 4. Create SSH keys
   * Create a SSH key locally
   `$ ssh-keygen -t rsa`
   * Copy the fingerprint returned from ^^^^
-  * Create a environment variable in circleci
+  * Add another environment variable in circleci
     - HEROKU_SSH_FINGERPRINT
       - paste the copied fingerprint as the value
   * Add the public SSH to Heroku
   `$ heroku keys:add`
-  * Navigate to ~/.ssh/id_rsa and copy key including `-----Begin RSA PRIVATE KEY ----` and `-----End RSA PRIVATE KEY------`
+  * Open ~/.ssh/id_rsa (or wherever you saved your ssh key) and copy key including `-----Begin RSA PRIVATE KEY ----` and `-----End RSA PRIVATE KEY------`
   * Add SSH private key to circleci
     * in project settings -> SSH Permissions -> `Add SSH Key`
     * Hostname = git.heroku.com
     * Paste the private key and click `Add SSH Key`
+    
 5. Celebrate (trigger circleci on your master branch and watch it deploy!)
+
 ![celebrate](https://media.giphy.com/media/xT8qBmk4MAjBeTO1tm/giphy.gif)
