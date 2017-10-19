@@ -50,7 +50,7 @@ Prerequisites:
 
 Key Name | Where to get it
 --- | ---
-`HEROKU_API_KEY` | Found in Account Settings: It is your individual API Key even if it is a company Account
+`HEROKU_API_KEY` | Found in Heroku Account Settings: It is your individual API Key even if it is a company Account
 `HEROKU_LOGIN` | Your Heroku login e.g: `name.lastname@company.com`
 `HEROKU_APP_NAME` | The name of your app on Heroku
 
