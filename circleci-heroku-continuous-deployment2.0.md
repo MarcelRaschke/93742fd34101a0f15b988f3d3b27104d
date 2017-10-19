@@ -9,8 +9,8 @@ Prerequisites:
   * A project deployed to Heroku
   * A project in circleci set up using circleci version 2.0
 
-1. edit .circleci/config.yml
- Nested under `steps` after you `run: tests` add:
+1. edit `.circleci/config.yml`
+  - Nested under `steps` (after you run tests, etc.) add:
   ```
   - run: bash .circleci/setup-heroku.sh
   - add_ssh_keys:
@@ -24,7 +24,7 @@ Prerequisites:
           <any other necessary commands for heroku deployment you might need can go here>
         fi
   ```
-2. add the .circleci/setup-heroku.sh with the following
+2. Create a new file `.circleci/setup-heroku.sh` with the following:
   ```
   #!/bin/bash
   ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
